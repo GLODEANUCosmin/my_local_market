@@ -1,0 +1,17 @@
+The application must feature the usecase of a Market.
+
+The entities that have to be featured are:
+- Market
+- Stand
+- Products
+- Fruit
+- Vegetable
+- concrete classes for Fruit/Vegetable
+etc.
+
+
+Req v1:
+- Data diagram(Entities diagram)
+- Architecture diagram
+- etc. 
+The diagrams must be uploaded to ../diagrams folder
