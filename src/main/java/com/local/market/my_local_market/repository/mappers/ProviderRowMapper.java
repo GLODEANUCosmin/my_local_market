@@ -13,7 +13,7 @@ public class ProviderRowMapper implements RowMapper<Provider> {
 
         provider.setId(rs.getInt("UserID"));
         provider.setName(rs.getString("Name"));
-        provider.setWallet(rs.getInt("Wallet"));
+        provider.setWallet(rs.getFloat("Wallet"));
         provider.setPassword(rs.getString("password"));
         provider.setCodCui(rs.getString("CodCUI"));
 

@@ -26,11 +26,11 @@ public class ProductDao {
         return jdbcTemplate.query("SELECT * FROM PRODUCTS", new ProductRowMapper());
     }
 
-    public int createProduct(Integer provID, Integer price, Integer amount, Integer standID, String name) {
+    public int createProduct(Integer provID, Float price, Integer amount, Integer standID, String name) {
         return jdbcTemplate.update("INSERT INTO PRODUCTS(PROVIDERID, PRICE, AMOUNT, STANDID, NAME) VALUES ( ?, ?, ?, ?, ?)", provID, price, amount, standID, name);
     }
 
-    public int updateProduct(Integer provID, Integer price, Integer amount, Integer standID, String name, Integer prodID) {
+    public int updateProduct(Integer provID, Float price, Integer amount, Integer standID, String name, Integer prodID) {
         return jdbcTemplate.update("UPDATE PRODUCTS SET PROVIDERID = ?, PRICE = ?, AMOUNT = ?, STANDID = ?, NAME = ?  WHERE PRODUCTID = ?",  provID, price, amount, standID, name, prodID);
     }
     public int updateProductName(String name, Integer id) {

@@ -2,8 +2,10 @@ package com.local.market.my_local_market.repository;
 
 import com.local.market.my_local_market.exceptions.MarketNotFoundException;
 import com.local.market.my_local_market.model.Market;
+import com.local.market.my_local_market.model.Stand;
 import com.local.market.my_local_market.model.User;
 import com.local.market.my_local_market.repository.mappers.MarketRowMapper;
+import com.local.market.my_local_market.repository.mappers.StandRowMapper;
 import com.local.market.my_local_market.repository.mappers.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -42,5 +44,12 @@ public class MarketDao {
         }
     }
 
+    public List<Stand> getAllStands(Integer id) {
+        return jdbcTemplate.query("SELECT * FROM STANDS WHERE MARKETID = ?", new StandRowMapper(), id);
+    }
+
+    public int deleteMarket(int id) {
+        return jdbcTemplate.update("DELETE FROM MARKET WHERE USERID = ?", id);
+    }
 
 }

@@ -4,9 +4,10 @@ public class Product {
     private int productID;
     private int providerID;
     private int standID;
-    private int price;
+    private float price;
     private int amount;
     private String name;
+    private Type tip;
 
     public int getProductID() {
         return productID;
@@ -32,11 +33,11 @@ public class Product {
         this.standID = standID;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -54,5 +55,13 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Type getTip() {
+        return tip;
+    }
+
+    public void setTip(Type tip) {
+        this.tip = tip;
     }
 }

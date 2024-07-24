@@ -1,8 +1,13 @@
 package com.local.market.my_local_market.repository;
 
 import com.local.market.my_local_market.exceptions.UserNotFoundException;
+import com.local.market.my_local_market.model.Product;
+import com.local.market.my_local_market.model.Stand;
 import com.local.market.my_local_market.model.User;
+import com.local.market.my_local_market.repository.mappers.ProductRowMapper;
+import com.local.market.my_local_market.repository.mappers.StandRowMapper;
 import com.local.market.my_local_market.repository.mappers.UserRowMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,11 +28,11 @@ public class UserDao {
         return jdbcTemplate.query("SELECT * FROM USERS", new UserRowMapper());
     }
 
-    public int createUser(String name, Integer sum, String password) {
+    public int createUser(String name, Float sum, String password) {
         return jdbcTemplate.update("INSERT INTO USERS(NAME, WALLET, PASSWORD) VALUES ( ?, ?, ?)", name, sum, password);
     }
 
-    public int updateUser(String name, String password, Integer money, Integer id) {
+    public int updateUser(String name, String password, Float money, Integer id) {
         return jdbcTemplate.update("UPDATE USERS SET NAME = ?, WALLET = ?, PASSWORD = ? WHERE USERID = ?",  name, money, password, id);
     }
 
@@ -35,7 +40,7 @@ public class UserDao {
         return jdbcTemplate.update("UPDATE USERS SET NAME = ? WHERE USERID = ?",  name, id);
     }
 
-    public int updateUserWallet(Integer money, Integer id) {
+    public int updateUserWallet(Float money, Integer id) {
         return jdbcTemplate.update("UPDATE USERS SET Wallet = ? WHERE USERID = ?",  money, id);
     }
 
@@ -54,5 +59,33 @@ public class UserDao {
             throw new UserNotFoundException(String.format("User with id %s was not found", id));
         }
     }
+
+/*
+    @Transactional
+    public int buy(Integer standID, Integer amount, Integer productID, Integer UserID){
+        User user;
+        Product product;
+        if(amount<=0)
+            return 2;
+
+        try{
+            user = jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE USERID = ?", new UserRowMapper(), UserID);
+        }catch (EmptyResultDataAccessException ex) {
+            return 1;
+        }
+        try{
+            product = jdbcTemplate.queryForObject("SELECT * FROM PRODUCTS WHERE PRODUCTID = ? and STANDID = ?", new ProductRowMapper(), productID, standID);
+        }catch (EmptyResultDataAccessException ex) {
+            return 1;
+        }
+
+        if(product.getAmount()<amount){
+            return 3;
+        }
+
+
+    }
+*/
+
 
 }

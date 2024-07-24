@@ -5,7 +5,7 @@ public class User {
 
     protected int id;
 
-    protected int wallet;
+    protected Float wallet;
     protected String name;
 
     protected String password;
@@ -20,7 +20,7 @@ public class User {
         return this.name;
     }
 
-    public int getWallet() {
+    public Float getWallet() {
         return this.wallet;
     }
 
@@ -40,7 +40,7 @@ public class User {
         this.password = password;
     }
 
-    public void setWallet(int wallet) {
+    public void setWallet(Float wallet) {
         this.wallet = wallet;
     }
 
