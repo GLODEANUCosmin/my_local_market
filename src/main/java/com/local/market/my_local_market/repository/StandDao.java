@@ -1,5 +1,6 @@
 package com.local.market.my_local_market.repository;
 
+import com.local.market.my_local_market.exceptions.MarketNotFoundException;
 import com.local.market.my_local_market.exceptions.StandNotFoundException;
 import com.local.market.my_local_market.model.Market;
 import com.local.market.my_local_market.model.Product;
@@ -54,8 +55,10 @@ public class StandDao {
         try {
             return jdbcTemplate.queryForObject("SELECT * FROM MARKETS WHERE MARKETID = ?", new MarketRowMapper(), id);
         } catch (EmptyResultDataAccessException ex) {
-            throw new StandNotFoundException(String.format("Stand with id %s was not found", id));
+            throw new MarketNotFoundException(String.format("Market with id %s was not found", id));
         }
     }
+
+
 
 }

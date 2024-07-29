@@ -39,6 +39,7 @@ public class ProviderService {
 
     public void updateProvider(Integer id, Provider provider) {
         providerRepository.updateCodCUI(provider.getCodCui(), id);
+        providerRepository.updateRating(provider.getRating(), id);
     }
 
 
@@ -47,7 +48,7 @@ public class ProviderService {
 
         providerUtil.patchProvider(provider, partialProvider);
 
-        providerRepository.updateCodCUI(provider.getCodCui(), id);
+        providerRepository.updateProvider(provider.getCodCui(), provider.getRating(),id);
         userRepository.updateUser(provider.getName(),provider.getPassword(),provider.getWallet(),id);
     }
 

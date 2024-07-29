@@ -1,5 +1,6 @@
 package com.local.market.my_local_market.service;
 import com.local.market.my_local_market.model.Market;
+import com.local.market.my_local_market.model.Stand;
 import com.local.market.my_local_market.model.User;
 import com.local.market.my_local_market.repository.MarketDao;
 import com.local.market.my_local_market.util.MarketUtil;
@@ -34,6 +35,9 @@ public class MarketService {
         return marketRepository.getAllMarkets();
     }
 
+    public List<Stand> getAllStands(Integer marketID) {
+        return marketRepository.getAllStands(marketID);
+    }
 
     public void updateMarket(Integer id, Market market) {
         marketRepository.updateMarketName(market.getName(),id);

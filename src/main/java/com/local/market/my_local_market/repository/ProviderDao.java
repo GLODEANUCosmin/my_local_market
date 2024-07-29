@@ -36,6 +36,10 @@ public class ProviderDao {
         return jdbcTemplate.update("UPDATE PROVIDERS SET CODCUI = ? WHERE USERID = ?", codCUI, id);
     }
 
+    public int updateRating(Float rating, Integer id) {
+        return jdbcTemplate.update("UPDATE PROVIDERS SET RATING = ? WHERE USERID = ?", rating, id);
+    }
+
     public int deleteProvider(int id) {
         return jdbcTemplate.update("DELETE FROM PROVIDERS WHERE USERID = ?", id);
     }
@@ -56,4 +60,7 @@ public class ProviderDao {
         return jdbcTemplate.query("SELECT * FROM PRODUCTS WHERE PROVIDERID = ?", new ProductRowMapper(), id);
     }
 
+    public int updateProvider(String codCUI, Float rating, Integer id) {
+        return jdbcTemplate.update("UPDATE PROVIDERS SET CODCUI = ?, RATING = ? WHERE USERID = ?",  codCUI, rating, id);
+    }
 }

@@ -60,32 +60,12 @@ public class UserDao {
         }
     }
 
-/*
-    @Transactional
-    public int buy(Integer standID, Integer amount, Integer productID, Integer UserID){
-        User user;
-        Product product;
-        if(amount<=0)
-            return 2;
-
-        try{
-            user = jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE USERID = ?", new UserRowMapper(), UserID);
-        }catch (EmptyResultDataAccessException ex) {
-            return 1;
-        }
-        try{
-            product = jdbcTemplate.queryForObject("SELECT * FROM PRODUCTS WHERE PRODUCTID = ? and STANDID = ?", new ProductRowMapper(), productID, standID);
-        }catch (EmptyResultDataAccessException ex) {
-            return 1;
-        }
-
-        if(product.getAmount()<amount){
-            return 3;
-        }
 
 
-    }
-*/
+
+
+
+
 
 
 }

@@ -6,6 +6,7 @@ public class Provider extends User{
 
 
     private String codCui;
+    private Float rating;
 
     public String getCodCui() {
         return codCui;
@@ -13,5 +14,13 @@ public class Provider extends User{
 
     public void setCodCui(String codCui) {
         this.codCui = codCui;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 }

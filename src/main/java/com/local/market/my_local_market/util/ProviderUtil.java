@@ -15,17 +15,21 @@ public class ProviderUtil {
         String wallet = partialProvider.get("wallet");
         String password = partialProvider.get("password");
         String codCUI = partialProvider.get("codCUI");
+        String rating = partialProvider.get("rating");
         if (!StringUtils.isNullOrEmpty(name)) {
             provider.setName(name);
         }
         if (!StringUtils.isNullOrEmpty(wallet)) {
-            provider.setWallet(Integer.parseInt(wallet));
+            provider.setWallet(Float.parseFloat(wallet));
         }
         if (!StringUtils.isNullOrEmpty(password)) {
             provider.setPassword(password);
         }
         if (!StringUtils.isNullOrEmpty(codCUI)) {
             provider.setCodCui(codCUI);
+        }
+        if (!StringUtils.isNullOrEmpty(rating)) {
+            provider.setWallet(Float.parseFloat(rating));
         }
 
     }
