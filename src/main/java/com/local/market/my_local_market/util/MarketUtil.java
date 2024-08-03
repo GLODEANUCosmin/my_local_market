@@ -10,8 +10,12 @@ import java.util.Map;
 public class MarketUtil {
     public void patchMarket(Market market, Map<String, String> partialMarket) {
         String name = partialMarket.get("name");
+        String description = partialMarket.get("description");
         if (!StringUtils.isNullOrEmpty(name)) {
             market.setName(name);
+        }
+        if (!StringUtils.isNullOrEmpty(description)) {
+            market.setDescription(description);
         }
 
 

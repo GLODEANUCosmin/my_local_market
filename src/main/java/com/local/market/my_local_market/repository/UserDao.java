@@ -25,36 +25,37 @@ public class UserDao {
     }
 
     public List<User> getAllUsers() {
-        return jdbcTemplate.query("SELECT * FROM USERS", new UserRowMapper());
+        return jdbcTemplate.query("SELECT * FROM \"Users\"", new UserRowMapper());
     }
 
     public int createUser(String name, Float sum, String password) {
-        return jdbcTemplate.update("INSERT INTO USERS(NAME, WALLET, PASSWORD) VALUES ( ?, ?, ?)", name, sum, password);
+        return jdbcTemplate.update("INSERT INTO \"Users\" (\"Name\", \"Wallet\", \"Password\") VALUES ( ?, ?, ?)", name, sum, password);
     }
 
     public int updateUser(String name, String password, Float money, Integer id) {
-        return jdbcTemplate.update("UPDATE USERS SET NAME = ?, WALLET = ?, PASSWORD = ? WHERE USERID = ?",  name, money, password, id);
+        return jdbcTemplate.update("UPDATE \"Users\" SET \"Name\" = ?, \"Wallet\" = ?, \"Password\" = ? WHERE \"UserID\" = ?",  name, money, password, id);
     }
 
     public int updateUserName(String name, Integer id) {
-        return jdbcTemplate.update("UPDATE USERS SET NAME = ? WHERE USERID = ?",  name, id);
+        return jdbcTemplate.update("UPDATE \"Users\" SET \"Name\" = ? WHERE \"UserID\" = ?",  name, id);
     }
 
     public int updateUserWallet(Float money, Integer id) {
-        return jdbcTemplate.update("UPDATE USERS SET Wallet = ? WHERE USERID = ?",  money, id);
+        return jdbcTemplate.update("UPDATE \"Users\" SET \"Wallet\" = ? WHERE \"UserID\" = ?",  money, id);
+
     }
 
     public int updateUserPassword(String password, Integer id) {
-        return jdbcTemplate.update("UPDATE USERS SET PASSWORD = ? WHERE USERID = ?", password, id);
+        return jdbcTemplate.update("UPDATE \"Users\" SET \"Password\" = ? WHERE \"UserID\" = ?", password, id);
     }
 
     public int deleteUser(int id) {
-        return jdbcTemplate.update("DELETE FROM USERS WHERE USERID = ?", id);
+        return jdbcTemplate.update("DELETE FROM \"Users\" WHERE \"UserID\" = ?", id);
     }
 
     public User getUserById(Integer id) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM USERS WHERE USERID = ?", new UserRowMapper(), id);
+            return jdbcTemplate.queryForObject("SELECT * FROM \"Users\" WHERE \"UserID\" = ?", new UserRowMapper(), id);
         } catch (EmptyResultDataAccessException ex) {
             throw new UserNotFoundException(String.format("User with id %s was not found", id));
         }

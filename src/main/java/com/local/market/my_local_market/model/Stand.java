@@ -1,32 +1,44 @@
 package com.local.market.my_local_market.model;
 
+import java.util.List;
+
 public class Stand {
 
-    private int standID;
-    private int providerID;
-    private int marketID;
+    private Integer standID;
+    private Integer providerID;
+    private Integer marketID;
+    private String name;
 
-    public int getStandID() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Integer getStandID() {
         return standID;
     }
 
-    public void setStandID(int standID) {
+    public void setStandID(Integer standID) {
         this.standID = standID;
     }
 
-    public int getProviderID() {
+    public Integer getProviderID() {
         return providerID;
     }
 
-    public void setProviderID(int providerID) {
+    public void setProviderID(Integer providerID) {
         this.providerID = providerID;
     }
 
-    public int getMarketID() {
+    public Integer getMarketID() {
         return marketID;
     }
 
-    public void setMarketID(int marketID) {
+    public void setMarketID(Integer marketID) {
         this.marketID = marketID;
     }
 }

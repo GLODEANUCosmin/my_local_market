@@ -14,8 +14,9 @@ public class ProviderRowMapper implements RowMapper<Provider> {
         provider.setId(rs.getInt("UserID"));
         provider.setName(rs.getString("Name"));
         provider.setWallet(rs.getFloat("Wallet"));
-        provider.setPassword(rs.getString("password"));
-        provider.setCodCui(rs.getString("CodCUI"));
+        provider.setPassword(rs.getString("Password"));
+        provider.setCodCUI(rs.getString("CodCUI"));
+        provider.setRating(rs.getInt("Rating"));
 
         return provider;
     }

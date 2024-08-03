@@ -3,6 +3,7 @@ import com.local.market.my_local_market.model.Provider;
 import com.local.market.my_local_market.repository.ProviderDao;
 import com.local.market.my_local_market.repository.UserDao;
 import com.local.market.my_local_market.util.ProviderUtil;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class ProviderService {
 
 
     public void registerProvider(Provider provider) {
-        providerRepository.createProvider(provider.getId(),provider.getCodCui());
+        providerRepository.createProvider(provider.getId(),provider.getCodCUI());
     }
 
 
@@ -38,18 +39,24 @@ public class ProviderService {
 
 
     public void updateProvider(Integer id, Provider provider) {
-        providerRepository.updateCodCUI(provider.getCodCui(), id);
-        providerRepository.updateRating(provider.getRating(), id);
+        System.out.println("Provserv");
+        providerRepository.updateProvider(provider.getCodCUI(), provider.getRating(),id);
+        userRepository.updateUser(provider.getName(),provider.getPassword(),provider.getWallet(),id);
     }
 
-
+    @Transactional
     public void patchProvider(Integer id, Map<String, String> partialProvider) {
-        Provider provider = providerRepository.getProviderById(id);
+        Provider provider = new Provider();
 
         providerUtil.patchProvider(provider, partialProvider);
 
-        providerRepository.updateProvider(provider.getCodCui(), provider.getRating(),id);
-        userRepository.updateUser(provider.getName(),provider.getPassword(),provider.getWallet(),id);
+        if (provider.getName()!=null){ userRepository.updateUserName(provider.getName(),id); }
+        if (provider.getWallet()!=null){ userRepository.updateUserWallet(provider.getWallet(),id); }
+        if (provider.getPassword()!=null){ userRepository.updateUserPassword(provider.getPassword(),id); }
+        if (provider.getCodCUI()!=null){ providerRepository.updateCodCUI(provider.getCodCUI(),id); }
+        if (provider.getRating()!=null){ providerRepository.updateRating(provider.getRating(),id); }
+
+
     }
 
 

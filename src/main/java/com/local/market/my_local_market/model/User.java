@@ -3,7 +3,7 @@ package com.local.market.my_local_market.model;
 
 public class User {
 
-    protected int id;
+    protected Integer id;
 
     protected Float wallet;
     protected String name;
@@ -11,7 +11,7 @@ public class User {
     protected String password;
 
 
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 
@@ -28,7 +28,7 @@ public class User {
         return this.password;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

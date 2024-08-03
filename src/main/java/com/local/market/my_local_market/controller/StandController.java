@@ -1,5 +1,6 @@
 package com.local.market.my_local_market.controller;
 
+import com.local.market.my_local_market.model.Provider;
 import com.local.market.my_local_market.model.Stand;
 import com.local.market.my_local_market.service.MarketService;
 import com.local.market.my_local_market.service.StandService;
@@ -22,17 +23,18 @@ public class StandController {
     }
 
     @PostMapping(value = "markets/{marketID}/stands", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void registerStand(@RequestBody Stand stand) {
+    public void registerStand(@PathVariable Integer marketID, @RequestBody Stand stand) {
+        stand.setMarketID(marketID);
         standService.registerStand(stand);
     }
 
-    @GetMapping(value = "markets/{marketID}/stands/{id}", produces = MediaType.APPLICATION_XML_VALUE)
-    public Stand getStandById(@PathVariable Integer id) {
+    @GetMapping(value = "markets/{marketID}/stands/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Stand getStandByIdMarket(@PathVariable Integer id) {
         return standService.getStandById(id);
     }
 
     @GetMapping(value = "markets/{marketID}/stands", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Stand> getAllStands(@PathVariable int marketID) {
+    public List<Stand> getAllStandsOfMarket(@PathVariable int marketID) {
         return marketService.getAllStands(marketID);
     }
 
@@ -41,4 +43,18 @@ public class StandController {
     public void deleteStand(@PathVariable Integer id) {
         standService.deleteStand(id);
     }
+
+
+    @GetMapping(value = "/providers/{providerID}/stands", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Stand> getAllStandsOfProvider(@PathVariable Integer providerID) {
+        return standService.getAllStockbyID(providerID);
+    }
+
+    @GetMapping(value = "/providers/{providerID}/stands/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Stand getStandByIdProvider(@PathVariable Integer id) {
+        return standService.getStandById(id);
+    }
+
+
+
 }

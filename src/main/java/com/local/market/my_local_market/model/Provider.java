@@ -4,23 +4,24 @@ import org.springframework.lang.NonNull;
 
 public class Provider extends User{
 
+    private String codCUI;
+    private Integer rating;
 
-    private String codCui;
-    private Float rating;
-
-    public String getCodCui() {
-        return codCui;
+    public String getCodCUI() {
+        return codCUI;
     }
 
-    public void setCodCui(String codCui) {
-        this.codCui = codCui;
+    public void setCodCUI(String codCUI) {
+        this.codCUI = codCUI;
     }
 
-    public Float getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(Float rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
+
+
 }

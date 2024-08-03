@@ -1,15 +1,15 @@
 package com.local.market.my_local_market.model;
 
 public class Product {
-    private int productID;
-    private int providerID;
-    private int standID;
-    private float price;
-    private int amount;
+    private Integer productID;
+    private Integer providerID;
+    private Integer standID;
+    private Float price;
+    private Integer amount;
     private String name;
     private Type tip;
 
-    public int getProductID() {
+    public Integer getProductID() {
         return productID;
     }
 
@@ -17,7 +17,7 @@ public class Product {
         this.productID = productID;
     }
 
-    public int getProviderID() {
+    public Integer getProviderID() {
         return providerID;
     }
 
@@ -25,7 +25,7 @@ public class Product {
         this.providerID = providerID;
     }
 
-    public int getStandID() {
+    public Integer getStandID() {
         return standID;
     }
 
@@ -33,15 +33,15 @@ public class Product {
         this.standID = standID;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
@@ -63,5 +63,12 @@ public class Product {
 
     public void setTip(Type tip) {
         this.tip = tip;
+    }
+
+    public String getTipString(){
+        return Type.typeToString(this.tip);
+    }
+    public void setTipString(String tip){
+        setTip(Type.stringToType(tip));
     }
 }

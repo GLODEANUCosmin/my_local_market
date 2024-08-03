@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "133a9d6b-78e2-48c9-9f55-5329f9c73aab",
+		"name": "MyLocalMarket/markets/stands",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34105589"
+	},
+	"item": [
+		{
+			"name": "localhost:8090/markets/2/stands",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"providerID\":1,\r\n    \"name\":\"Ana's Basket of Apples\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/markets/2/stands",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"markets",
+						"2",
+						"stands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/markets/2/stands/4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/markets/2/stands/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"markets",
+						"2",
+						"stands",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/markets/2/stands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/markets/2/stands",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"markets",
+						"2",
+						"stands"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

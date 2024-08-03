@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "a8762ea5-c275-4521-b304-0db924fb6da4",
+		"name": "MyLocalMarket/providers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34105589"
+	},
+	"item": [
+		{
+			"name": "localhost:8090/providers/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"codCUI\":\"678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/providers/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"providers",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/providers/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/providers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"providers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/providers/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/providers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"providers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/providers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/providers",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/providers/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"name\":\"Pavel\",\r\n    \"password\":\"NuSuntOvidiu\",\r\n    \"wallet\":90.05,\r\n    \"rating\":2,\r\n    \"codCUI\":\"987LKJ321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/providers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"providers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/providers/1",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"codCUI\":\"98721\",\r\n    \"rating\":12\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/providers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"providers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

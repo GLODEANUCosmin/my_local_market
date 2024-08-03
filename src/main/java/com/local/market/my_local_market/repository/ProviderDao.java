@@ -25,42 +25,45 @@ public class ProviderDao {
     }
 
     public List<Provider> getAllProviders() {
-        return jdbcTemplate.query("SELECT * FROM PROVIDERS P LEFT JOIN USERS U ON P.USERID = U.USERID", new ProviderRowMapper());
+        return jdbcTemplate.query("SELECT * FROM \"Providers\" p LEFT JOIN \"Users\" u ON p.\"UserID\" = u.\"UserID\"", new ProviderRowMapper());
     }
 
     public int createProvider(Integer id, String codCUI) {
-        return jdbcTemplate.update("INSERT INTO PROVIDERS(USERID, CODCUI) VALUES ( ?, ?)", id, codCUI);
+
+        return jdbcTemplate.update("INSERT INTO \"Providers\"(\"UserID\", \"CodCUI\") VALUES ( ?, ?)", id, codCUI);
     }
 
     public int updateCodCUI(String codCUI, Integer id) {
-        return jdbcTemplate.update("UPDATE PROVIDERS SET CODCUI = ? WHERE USERID = ?", codCUI, id);
+        return jdbcTemplate.update("UPDATE \"Providers\" SET \"CodCUI\" = ? WHERE \"UserID\" = ?", codCUI, id);
     }
 
-    public int updateRating(Float rating, Integer id) {
-        return jdbcTemplate.update("UPDATE PROVIDERS SET RATING = ? WHERE USERID = ?", rating, id);
+    public int updateRating(Integer rating, Integer id) {
+        System.out.println("rating: " + rating);
+        return jdbcTemplate.update("UPDATE \"Providers\" SET \"Rating\" = ? WHERE \"UserID\" = ?", rating, id);
     }
 
     public int deleteProvider(int id) {
-        return jdbcTemplate.update("DELETE FROM PROVIDERS WHERE USERID = ?", id);
+        return jdbcTemplate.update("DELETE FROM \"Providers\" WHERE \"UserID\" = ?", id);
     }
 
     public Provider getProviderById(Integer id) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM PROVIDERS P LEFT JOIN USERS U ON P.USERID = U.USERID WHERE P.USERID = ?", new ProviderRowMapper(), id);
+            return jdbcTemplate.queryForObject("SELECT * FROM \"Providers\" p LEFT JOIN \"Users\" u ON p.\"UserID\" = u.\"UserID\" WHERE p.\"UserID\" = ?", new ProviderRowMapper(), id);
         } catch (EmptyResultDataAccessException ex) {
             throw new ProviderNotFoundException(String.format("Provider with id %s was not found", id));
         }
     }
 
     public List<Stand> getAllTheirStands(Integer id) {
-        return jdbcTemplate.query("SELECT * FROM STANDS WHERE PROVIDERID = ?", new StandRowMapper(), id);
+        return jdbcTemplate.query("SELECT * FROM \"Stands\" WHERE \"ProviderID\" = ?", new StandRowMapper(), id);
     }
 
     public List<Product> getAllTheirStock(Integer id) {
-        return jdbcTemplate.query("SELECT * FROM PRODUCTS WHERE PROVIDERID = ?", new ProductRowMapper(), id);
+        return jdbcTemplate.query("SELECT * FROM \"Products\" WHERE \"ProviderID\" = ?", new ProductRowMapper(), id);
     }
 
-    public int updateProvider(String codCUI, Float rating, Integer id) {
-        return jdbcTemplate.update("UPDATE PROVIDERS SET CODCUI = ?, RATING = ? WHERE USERID = ?",  codCUI, rating, id);
+    public int updateProvider(String codCUI, Integer rating, Integer id) {
+        System.out.println("ProvDAO");
+        return jdbcTemplate.update("UPDATE \"Providers\" SET \"CodCUI\" = ?, \"Rating\" = ? WHERE \"UserID\" = ?",  codCUI, rating, id);
     }
 }

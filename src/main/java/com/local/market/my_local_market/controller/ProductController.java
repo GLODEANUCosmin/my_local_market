@@ -24,32 +24,44 @@ public class ProductController {
     }
 
     @PostMapping(value = "markets/{marketID}/stands/{standID}/products", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void registerProduct(@RequestBody Product product) {
+    public void registerProduct(@RequestBody Product product, @PathVariable Integer marketID, @PathVariable Integer standID) {
+        product.setStandID(standID);
         productService.registerProduct(product);
     }
 
-    @GetMapping(value = "markets/{marketID}/stands/{standID}/products/{id}", produces = MediaType.APPLICATION_XML_VALUE)
-    public Product getProductById(@PathVariable Integer id) {
-        return productService.getProductById(id);
+    @GetMapping(value = "markets/{marketID}/stands/{standID}/products/{productID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Product getProductById(@PathVariable Integer productID) {
+        return productService.getProductById(productID);
     }
 
     @GetMapping(value = "markets/{marketID}/stands/{standID}/products", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> getAllProducts(@PathVariable int standID) {
-        return standService.getStock(standID);
+    public List<Product> getAllProductsByStandIDM(@PathVariable int standID) {
+        return productService.getAllProductsByStandId(standID);
     }
 
-    @PutMapping(value = "markets/{marketID}/stands/{standID}/products", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateProduct(@PathVariable Integer id, @RequestBody Product product) {
-        productService.updateProduct(id, product);
+    @PutMapping(value = "/markets/{marketID}/stands/{standID}/products/{productID}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateProduct(@PathVariable Integer productID, @PathVariable Integer standID, @RequestBody Product product) {
+        product.setStandID(standID);
+        productService.updateProduct(productID, product);
     }
 
-    @PatchMapping(value = "markets/{marketID}/stands/{standID}/products", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void patchProduct(@PathVariable Integer id, @RequestBody Map<String, String> partialProduct) {
-        productService.patchProduct(id, partialProduct);
+    @PatchMapping(value = "markets/{marketID}/stands/{standID}/products/{productID}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void patchProduct(@PathVariable Integer productID, @RequestBody Map<String, String> partialProduct) {
+        //System.out.println(partialProduct);
+        productService.patchProduct(productID, partialProduct);
     }
 
     @DeleteMapping(value = "markets/{marketID}/stands/{standID}/products/{id}")
     public void deleteProduct(@PathVariable Integer id) {
         productService.deleteProduct(id);
+    }
+
+    @GetMapping(value = "providers/{providerID}/stands/{standID}/products", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getAllProductsByStandIDP(@PathVariable Integer standID) {
+        return productService.getAllProductsByStandId(standID);
+    }
+    @GetMapping(value = "providers/{providerID}/products", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getAllProductsByProviderID(@PathVariable Integer providerID) {
+        return productService.getAllProductsByProviderId(providerID);
     }
 }

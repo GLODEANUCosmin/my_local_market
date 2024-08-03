@@ -23,7 +23,7 @@ public class StandService {
 
 
     public void registerStand(Stand stand) {
-        standRepository.createStand(stand.getProviderID(),stand.getMarketID());
+        standRepository.createStand(stand.getProviderID(),stand.getMarketID(), stand.getName());
     }
 
 
@@ -45,4 +45,6 @@ public class StandService {
         return standRepository.getStock(id);
     }
 
+    public List<Stand> getAllStockbyID(Integer providerID) { return standRepository.getAllStockbyID(providerID);
+    }
 }

@@ -25,31 +25,35 @@ public class MarketDao {
     }
 
     public List<Market> getAllMarkets() {
-        return jdbcTemplate.query("SELECT * FROM MARKETS", new MarketRowMapper());
+        return jdbcTemplate.query("SELECT * FROM \"Markets\"", new MarketRowMapper());
     }
 
-    public int createMarket(String name) {
-        return jdbcTemplate.update("INSERT INTO MARKETS(NAME) VALUES (?)", name);
+    public int createMarket(String name, String description) {
+        return jdbcTemplate.update("INSERT INTO \"Markets\" (\"Name\" , \"Description\") VALUES (?, ?)", name, description);
     }
 
     public int updateMarketName(String name, Integer id) {
-        return jdbcTemplate.update("UPDATE MARKETS SET NAME = ? WHERE ID = ?",  name, id);
+        return jdbcTemplate.update("UPDATE \"Markets\" SET \"Name\" = ? WHERE \"MarketID\" = ?",  name, id);
+    }
+
+    public int updateMarketDescription(String description, Integer id) {
+        return jdbcTemplate.update("UPDATE \"Markets\" SET \"Description\" = ? WHERE \"MarketID\" = ?",  description, id);
     }
 
     public Market getMarketById(Integer id) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM MARKETS WHERE ID = ?", new MarketRowMapper(), id);
+            return jdbcTemplate.queryForObject("SELECT * FROM \"Markets\" WHERE \"MarketID\" = ?", new MarketRowMapper(), id);
         } catch (EmptyResultDataAccessException ex) {
             throw new MarketNotFoundException(String.format("Market with id %s was not found", id));
         }
     }
 
     public List<Stand> getAllStands(Integer id) {
-        return jdbcTemplate.query("SELECT * FROM STANDS WHERE MARKETID = ?", new StandRowMapper(), id);
+        return jdbcTemplate.query("SELECT * FROM \"Stands\" WHERE \"MarketID\" = ?", new StandRowMapper(), id);
     }
 
     public int deleteMarket(int id) {
-        return jdbcTemplate.update("DELETE FROM MARKET WHERE USERID = ?", id);
+        return jdbcTemplate.update("DELETE FROM \"Markets\" WHERE \"MarketID\" = ?", id);
     }
 
 }

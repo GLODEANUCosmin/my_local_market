@@ -2,6 +2,7 @@ package com.local.market.my_local_market.service;
 import com.local.market.my_local_market.model.User;
 import com.local.market.my_local_market.repository.UserDao;
 import com.local.market.my_local_market.util.UserUtil;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,13 +41,16 @@ public class UserService {
         userRepository.updateUser(user.getName(), user.getPassword(), user.getWallet(), id);
     }
 
-
+    @Transactional
     public void patchUser(Integer id, Map<String, String> partialUser) {
-        User user = userRepository.getUserById(id);
+        User user = new User();
+
 
         userUtil.patchUser(user, partialUser);
+        if (user.getName()!=null){ userRepository.updateUserName(user.getName(),id); }
+        if (user.getWallet()!=null){ userRepository.updateUserWallet(user.getWallet(),id); }
+        if (user.getPassword()!=null){ userRepository.updateUserPassword(user.getPassword(),id); }
 
-        userRepository.updateUser(user.getName(), user.getPassword(), user.getWallet(), id);
     }
 
 

@@ -2,6 +2,7 @@ package com.local.market.my_local_market.repository.mappers;
 
 
 import com.local.market.my_local_market.model.Product;
+import com.local.market.my_local_market.model.Type;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -16,8 +17,9 @@ public class ProductRowMapper implements RowMapper<Product> {
         product.setStandID(rs.getInt("StandID"));
         product.setProviderID(rs.getInt("ProviderID"));
         product.setAmount(rs.getInt("Amount"));
-        product.setPrice(rs.getInt("Price"));
+        product.setPrice(rs.getFloat("Price"));
         product.setName(rs.getString("Name"));
+        product.setTip(Type.stringToType(rs.getString("Type")));
 
         return product;
     }

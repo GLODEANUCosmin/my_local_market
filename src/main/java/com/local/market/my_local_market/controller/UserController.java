@@ -18,12 +18,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/users/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void registerUser(@RequestBody User user) {
         userService.registerUser(user);
     }
 
-    @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }

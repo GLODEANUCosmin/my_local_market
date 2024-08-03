@@ -22,7 +22,7 @@ public class MarketService {
     }
 
     public void registerMarket(Market market) {
-        marketRepository.createMarket(market.getName());
+        marketRepository.createMarket(market.getName(), market.getDescription());
     }
 
 
@@ -45,11 +45,11 @@ public class MarketService {
 
 
     public void patchMarket(Integer id, Map<String, String> partialMarket) {
-        Market market = marketRepository.getMarketById(id);
+        Market market = new Market();
 
         marketUtil.patchMarket(market, partialMarket);
-
-        marketRepository.updateMarketName(market.getName(), id);
+        if(market.getName()!=null){marketRepository.updateMarketName(market.getName(),id);}
+        if(market.getDescription()!=null){marketRepository.updateMarketDescription(market.getDescription(),id);}
     }
 
 

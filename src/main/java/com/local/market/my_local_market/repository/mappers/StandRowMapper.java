@@ -14,6 +14,7 @@ public class StandRowMapper implements RowMapper<Stand> {
         stand.setMarketID(rs.getInt("MarketID"));
         stand.setStandID(rs.getInt("StandID"));
         stand.setProviderID(rs.getInt("ProviderID"));
+        stand.setName(rs.getString("Name"));
 
         return stand;
     }

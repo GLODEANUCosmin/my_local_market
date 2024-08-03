@@ -25,40 +25,42 @@ public class StandDao {
     }
 
     public List<Stand> getAllStands() {
-        return jdbcTemplate.query("SELECT * FROM STANDS ", new StandRowMapper());
+        return jdbcTemplate.query("SELECT * FROM \"Stands\" ", new StandRowMapper());
     }
 
-    public int createStand(Integer providerID, Integer marketID) {
-        return jdbcTemplate.update("INSERT INTO STANDS(PROVIDERID, MARKETID) VALUES ( ?, ?)", providerID, marketID);
+    public int createStand(Integer providerID, Integer marketID, String name) {
+        return jdbcTemplate.update("INSERT INTO \"Stands\"(\"ProviderID\", \"MarketID\", \"Name\") VALUES ( ?, ?, ?)", providerID, marketID, name);
 
 
     }
 
     public Stand getStandById(Integer id) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM STANDS WHERE STANDID = ?", new StandRowMapper(), id);
+            return jdbcTemplate.queryForObject("SELECT * FROM \"Stands\" WHERE \"StandID\" = ?", new StandRowMapper(), id);
         } catch (EmptyResultDataAccessException ex) {
             throw new StandNotFoundException(String.format("Stand with id %s was not found", id));
         }
     }
 
     public int deleteStand(int id) {
-        return jdbcTemplate.update("DELETE FROM STANDS WHERE STANDID = ?", id);
+        return jdbcTemplate.update("DELETE FROM \"Stands\" WHERE \"StandID\" = ?", id);
     }
 
 
-    public List<Product> getStock(Integer id) {
-        return jdbcTemplate.query("SELECT * FROM PRODUCTS WHERE STANDID = ?", new ProductRowMapper(), id);
+    public List<Product> getStock(Integer standid) {
+        return jdbcTemplate.query("SELECT * FROM \"Products\" WHERE \"StandID\" = ?", new ProductRowMapper(), standid);
     }
 
-    public Market getMarketById(Integer id) {
+    public Market getMarketById(Integer marketid) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM MARKETS WHERE MARKETID = ?", new MarketRowMapper(), id);
+            return jdbcTemplate.queryForObject("SELECT * FROM \"Markets\" WHERE \"MarketID\" = ?", new MarketRowMapper(), marketid);
         } catch (EmptyResultDataAccessException ex) {
-            throw new MarketNotFoundException(String.format("Market with id %s was not found", id));
+            throw new MarketNotFoundException(String.format("Market with id %s was not found", marketid));
         }
     }
 
 
-
+    public List<Stand> getAllStockbyID(Integer providerID) {
+        return jdbcTemplate.query("SELECT * FROM \"Stands\" WHERE \"ProviderID\" = ?", new StandRowMapper(), providerID);
+    }
 }

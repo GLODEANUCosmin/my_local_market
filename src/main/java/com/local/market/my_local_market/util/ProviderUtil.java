@@ -11,25 +11,31 @@ import java.util.Map;
 @Component
 public class ProviderUtil {
     public void patchProvider(Provider provider, Map<String, String> partialProvider) {
+        System.out.println(partialProvider);
         String name = partialProvider.get("name");
         String wallet = partialProvider.get("wallet");
         String password = partialProvider.get("password");
         String codCUI = partialProvider.get("codCUI");
         String rating = partialProvider.get("rating");
         if (!StringUtils.isNullOrEmpty(name)) {
+            System.out.println(name);
             provider.setName(name);
         }
         if (!StringUtils.isNullOrEmpty(wallet)) {
+            System.out.println(wallet);
             provider.setWallet(Float.parseFloat(wallet));
         }
         if (!StringUtils.isNullOrEmpty(password)) {
+            System.out.println(password);
             provider.setPassword(password);
         }
         if (!StringUtils.isNullOrEmpty(codCUI)) {
-            provider.setCodCui(codCUI);
+            System.out.println(codCUI);
+            provider.setCodCUI(codCUI);
         }
         if (!StringUtils.isNullOrEmpty(rating)) {
-            provider.setWallet(Float.parseFloat(rating));
+            System.out.println(rating);
+            provider.setRating(Integer.parseInt(rating));
         }
 
     }
