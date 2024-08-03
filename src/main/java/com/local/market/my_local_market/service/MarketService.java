@@ -1,4 +1,5 @@
 package com.local.market.my_local_market.service;
+
 import com.local.market.my_local_market.model.Market;
 import com.local.market.my_local_market.model.Stand;
 import com.local.market.my_local_market.model.User;
@@ -40,7 +41,7 @@ public class MarketService {
     }
 
     public void updateMarket(Integer id, Market market) {
-        marketRepository.updateMarketName(market.getName(),id);
+        marketRepository.updateMarketName(market.getName(), id);
     }
 
 
@@ -48,8 +49,12 @@ public class MarketService {
         Market market = new Market();
 
         marketUtil.patchMarket(market, partialMarket);
-        if(market.getName()!=null){marketRepository.updateMarketName(market.getName(),id);}
-        if(market.getDescription()!=null){marketRepository.updateMarketDescription(market.getDescription(),id);}
+        if (market.getName() != null) {
+            marketRepository.updateMarketName(market.getName(), id);
+        }
+        if (market.getDescription() != null) {
+            marketRepository.updateMarketDescription(market.getDescription(), id);
+        }
     }
 
 

@@ -34,7 +34,7 @@ public class ProviderController {
         return providerService.getAllProviders();
     }
 
-    
+
     @PutMapping(value = "/providers/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateProvider(@PathVariable Integer id, @RequestBody Provider provider) {
         System.out.println("ProvCont");
