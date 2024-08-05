@@ -1,6 +1,9 @@
 package com.local.market.my_local_market.repository;
 
+import com.local.market.my_local_market.exceptions.MarketNotFoundException;
+import com.local.market.my_local_market.exceptions.UserNotFoundException;
 import com.local.market.my_local_market.model.User;
+import com.local.market.my_local_market.repository.mappers.MarketRowMapper;
 import com.local.market.my_local_market.repository.mappers.UserRowMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -141,5 +145,11 @@ class UserDaoTest {
 
     @Test
     void getUserByIdNotFoundTest() {
+
+        when(jdbcTemplateMock.queryForObject(anyString(), any(UserRowMapper.class), anyInt()))
+                .thenThrow(new EmptyResultDataAccessException(1));
+
+
+        assertThrows(UserNotFoundException.class, () -> userDao.getUserById(1));
     }
 }
