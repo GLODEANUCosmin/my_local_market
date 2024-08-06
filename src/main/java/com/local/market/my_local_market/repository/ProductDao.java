@@ -61,7 +61,6 @@ public class ProductDao {
     }
 
     public List<Product> getProductsByStandID(Integer standID){
-
         return jdbcTemplate.query("SELECT * FROM \"Products\" WHERE \"StandID\" = ?", new ProductRowMapper(), standID);
     }
     public List<Product> getProductsByProviderID(Integer providerID){
