@@ -1,2 +1,6 @@
+com\local\market\my_local_market\repository\ProductDaoTest.class
+com\local\market\my_local_market\repository\MarketDaoTest.class
 com\local\market\my_local_market\MyLocalMarketApplicationTests.class
-com\local\market\my_local_market\service\UserServiceTest.class
+com\local\market\my_local_market\repository\ProviderDaoTest.class
+com\local\market\my_local_market\repository\UserDaoTest.class
+com\local\market\my_local_market\repository\StandDaoTest.class

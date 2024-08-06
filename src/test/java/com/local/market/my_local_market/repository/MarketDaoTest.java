@@ -41,6 +41,8 @@ public class MarketDaoTest {
         MockitoAnnotations.openMocks(this);
     }
 
+
+
     @Test
     public void GetAllMarketsTest() {
 
