@@ -63,7 +63,6 @@ public class ProviderDao {
     }
 
     public int updateProvider(String codCUI, Integer rating, Integer id) {
-        System.out.println("ProvDAO");
         return jdbcTemplate.update("UPDATE \"Providers\" SET \"CodCUI\" = ?, \"Rating\" = ? WHERE \"UserID\" = ?",  codCUI, rating, id);
     }
 }
