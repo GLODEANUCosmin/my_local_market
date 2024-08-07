@@ -13,6 +13,7 @@ public class MarketRowMapper implements RowMapper<Market> {
 
         market.setMarketID(rs.getInt("MarketID"));
         market.setName(rs.getString("Name"));
+        market.setDescription(rs.getString("Description"));
 
         return market;
     }

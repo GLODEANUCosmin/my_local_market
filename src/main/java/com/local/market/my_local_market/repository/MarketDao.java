@@ -29,7 +29,7 @@ public class MarketDao {
     }
 
     public int createMarket(String name, String description) {
-        return jdbcTemplate.update("INSERT INTO \"Markets\" (\"Name\" , \"Description\") VALUES (?, ?)", name, description);
+        return jdbcTemplate.update("INSERT INTO \"Markets\" (\"Name\" ,\"Description\") VALUES (?, ?)", name, description);
     }
 
     public int updateMarketName(String name, Integer id) {
