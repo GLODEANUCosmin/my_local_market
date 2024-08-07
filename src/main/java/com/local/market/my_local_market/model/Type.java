@@ -36,7 +36,7 @@ public enum Type {
                 case Fish:
                     return "Fish";
                 case NonEdible:
-                    return "Nonedible";
+                    return "NonEdible";
                 case Berries:
                     return "Berries";
                 case Cores:
@@ -84,7 +84,7 @@ public enum Type {
             case "Fish":
                 return Type.Fish;
                 
-            case "Nonedible":
+            case "NonEdible":
                 return Type.NonEdible;
                 
             case "Cores":

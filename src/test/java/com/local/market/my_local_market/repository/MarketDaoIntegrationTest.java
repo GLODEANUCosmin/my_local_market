@@ -26,7 +26,7 @@ public class MarketDaoIntegrationTest {
     @BeforeEach
     public void setUp(){
         DataSource dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
-
+                .addScript("reset.sql")
                 .addScript("schema.sql")
                 .addScript("data.sql")
                 .build();

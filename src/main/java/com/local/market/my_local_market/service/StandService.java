@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
+
 @Service
 public class StandService {
 
@@ -45,6 +45,6 @@ public class StandService {
         return standRepository.getStock(id);
     }
 
-    public List<Stand> getAllStockbyID(Integer providerID) { return standRepository.getAllStockbyID(providerID);
+    public List<Stand> getAllStockbyID(Integer providerID) { return standRepository.getAllStandsbyProviderID(providerID);
     }
 }

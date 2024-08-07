@@ -60,7 +60,7 @@ public class StandDao {
     }
 
 
-    public List<Stand> getAllStockbyID(Integer providerID) {
+    public List<Stand> getAllStandsbyProviderID(Integer providerID) {
         return jdbcTemplate.query("SELECT * FROM \"Stands\" WHERE \"ProviderID\" = ?", new StandRowMapper(), providerID);
     }
 }
