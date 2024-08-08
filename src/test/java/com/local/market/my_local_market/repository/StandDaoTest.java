@@ -1,12 +1,10 @@
 package com.local.market.my_local_market.repository;
 
 import com.local.market.my_local_market.exceptions.MarketNotFoundException;
-import com.local.market.my_local_market.exceptions.ProviderNotFoundException;
 import com.local.market.my_local_market.exceptions.StandNotFoundException;
 import com.local.market.my_local_market.model.*;
 import com.local.market.my_local_market.repository.mappers.MarketRowMapper;
 import com.local.market.my_local_market.repository.mappers.ProductRowMapper;
-import com.local.market.my_local_market.repository.mappers.ProviderRowMapper;
 import com.local.market.my_local_market.repository.mappers.StandRowMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -168,7 +166,7 @@ class StandDaoTest {
     }
 
     @Test
-    void getAllStockByIDTest() {
+    void getAllStandsbyProviderIDTest() {
         Stand stand = new Stand();
         stand.setMarketID(1);
         stand.setProviderID(1);
@@ -179,7 +177,7 @@ class StandDaoTest {
                 .thenReturn(new ArrayList<Stand>(Collections.singleton(stand)));
 
 
-        List<Stand> stands = standDao.getAllStockbyID(1);
+        List<Stand> stands = standDao.getAllStandsbyProviderID(1);
 
         assertNotNull(stands);
         assertEquals(1, stand.getStandID());

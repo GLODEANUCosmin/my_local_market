@@ -1,2 +1,6 @@
 C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\MyLocalMarketApplicationTests.java
-C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\service\UserServiceTest.java
+C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\repository\MarketDaoTest.java
+C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\repository\ProductDaoTest.java
+C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\repository\ProviderDaoTest.java
+C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\repository\StandDaoTest.java
+C:\Users\Cosmin\OneDrive\Documente\My Projects\my_local_market\src\test\java\com\local\market\my_local_market\repository\UserDaoTest.java
